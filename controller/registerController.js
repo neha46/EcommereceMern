@@ -1,0 +1,5 @@
+const registerController=(  )=>{
+
+    
+}
+export {registerController}

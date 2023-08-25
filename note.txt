@@ -1,0 +1,1 @@
+nodemon- watchmode me hmara server ko on rakhega
