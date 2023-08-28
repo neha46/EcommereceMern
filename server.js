@@ -34,6 +34,7 @@ res.send("<h1>Welcome to ecommerece Mern stack project</h1>")
 //port
 const PORT=process.env.PORT||8080
 
+
 //APP RUN/LISTEn
 app.listen(PORT,()=>{
     console.log(`server running on ${process.env.Dev_Mode} http://localhost:${PORT}`.bgCyan.white);

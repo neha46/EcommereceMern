@@ -63,3 +63,13 @@ Verify with New Hash:
 When the user logs in with their new password, you'll use the new hash to verify the entered password against the stored hash in the database, just like during the initial login process.
 
 The key point here is that the process of changing a password is the same as setting a password initially, but you're updating the stored hash with the new hash. This maintains the security benefits of password hashing and ensures that even if someone gains access to the database, they won't have access to the actual passwords.
+
+
+onst user= await Users.create({...req.body, password:hashedPassword})
+//console.log(user);
+if(user){
+    res.status(201).send({
+        success:true,
+        messgae:"user registration successful",
+        user
+    });

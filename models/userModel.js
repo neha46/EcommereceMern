@@ -5,9 +5,9 @@ const userSchema=new mongoose.Schema({
         required:true,
         trim:true
     },
-    Email:{
+    email:{
         type : String ,
-        required:true,
+        required:true,  
         unique:true
     },
     password:{
@@ -15,16 +15,20 @@ const userSchema=new mongoose.Schema({
         required:true,
 
     },
-    Phone:{
+    phone:{ 
         type:String,
         required:true
-    }
-    ,address:{
+    },
+    address:{
         type:String,
         required:false
+    },
+    role:{
+        type:String,
+        requird:true
     }
 
 },{timestamps:true})
 
 //adding collection, giving reference and creating model
-export default mongoose.model('users',userSchema)
+export default mongoose.model('Users',userSchema)
