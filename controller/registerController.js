@@ -19,10 +19,10 @@ try {
     if(!address){res.send({error: "address is required"})}
    
 //existing user
-// const  existingUser = await User.findOne({ email });
-// if (!existingUser) {
-//     return res.status(400).json("Email already exists");
-// }
+const  existingUser = await User.findOne({ email });
+if (!existingUser) {
+    return res.status(400).json("Email already exists");
+}
 
 //password hash
 const hashedPassword= await hashPassword(password)
@@ -96,7 +96,8 @@ const loginController=async(req,res)=>
                 name:user.name,
                 email :user.email,
                 phone:user.phone,
-                password:user.password
+                password:user.password,
+                role:user.role
             },
             token,
         })
@@ -113,7 +114,7 @@ const loginController=async(req,res)=>
 }
 
 //dummy test router
-const tester=(req,res)=>{
+const   tester=(req,res)=>{
     res.send("this is our protected route")
 }
 

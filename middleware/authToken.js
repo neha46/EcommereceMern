@@ -1,31 +1,38 @@
 //for token comaprison- if match then show route
-import JWT from 'jsonwebtoken'
+
 import User from "../models/userModel.js";
+import JWT from 'jsonwebtoken'
 
 
- export const   requireSignIn=async(req,res,next)=>{
-    console.log(req.headers);
+ export const requireSignIn=async(req,res,next)=>{
+    console.log(req.headers.authorization);
+
     try {
-        const decode=JWT.verify(req.headers.authorization,process.env.JWT_SECRET)
-        next()
+        const decoded=JWT.verify(req.headers.authorization,process.env.JWT_SECRET);
+        //decrypt
+    
+        req.user=decoded;
+        next();
     } catch (error) {
         console.log(error);
         res.status()
-        
+   
     }
  }
 
 
  //admin access
- export const isAdmin=async(req,res)=>{
+ export const isAdmin=async(req,res,next)=>{
     try {
-        const user=await User.findById(req.User._id)
+        //console.log(req.user)
+        const user=await User.findById(req.user._id)
+        //console.log(user);
         if(user.role !==1){return res.status(401).send({
             success:false,
             message:"unauthorized access"
         }) }
         else{
-            next()
+            next();
         }
     } catch (error) {
         console.log(error);
