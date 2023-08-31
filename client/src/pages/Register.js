@@ -1,7 +1,19 @@
-import React from 'react';
+import React,{useState} from 'react';
 import Layout from '../components/Layout/Layout';
 
 const Register = () => {
+    
+    const [name,setName]=useState("")
+    const [email,setEmail]=useState("")
+    const [phone,setPhone]=useState("")
+    const [address,setAddress]=useState("")
+    const [password,setPassword]=useState("")
+
+    const handleInputChange = (event) => {
+        const newInputValue = event.target.value;
+        setEmail(newInputValue);
+      };
+  
   return (
     <Layout title={"Register Please!"}>
         <div className="register">
@@ -15,6 +27,8 @@ const Register = () => {
     </label>
     <input
       type="text"
+      value={name}
+      onChange={(e)=>setName(e.target.value)}
       className="form-control"
       id="exampleInputName"
     />
@@ -23,8 +37,11 @@ const Register = () => {
     <label htmlFor="exampleInputEmail1" className="form-label">
       Email
     </label>
+
     <input
       type="email"
+      value={email}
+       onChange={handleInputChange}
       className="form-control"
       id="exampleInputEmail1"
     />
@@ -39,6 +56,7 @@ const Register = () => {
     </label>
     <input
       type="password"
+      value={password}
       className="form-control"
       id="exampleInputPassword1"
     />
@@ -50,6 +68,7 @@ const Register = () => {
     </label>
     <input
       type="number"
+      value={phone}
       className="form-control"
       id="exampleInputName"
     />
@@ -60,16 +79,18 @@ const Register = () => {
     </label>
     <input
       type="text"
+      value={address}
       className="form-control"
       id="exampleInputaddress"
     />
 
- 
-  <button type="submit" className="btn btn-primary">
+ <div className='text-center mt-3'>
+ <button type="submit" className="btn btn-primary">
     Submit
   </button>
-</form>
+ </div>
 
+</form>
        </div>
 
       
