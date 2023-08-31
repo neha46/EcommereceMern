@@ -8,3 +8,73 @@
 /*
 font-family: 'Playfair Display', serif;
 font-family: 'Poppins', sans-serif;*/
+/* ----------------Header----------------- */
+.navbar{
+  font-family:'Playfair Display', serif;
+  font-size: 17px;
+  line-height: 26px;
+  box-shadow: 0 6px 8px -6px;
+  --webkit-shadow:0 6px 8px -6px;
+  border-bottom: 0.3px solid gray;
+}
+.nav-link{
+  font-weight: 300!important
+}
+.navbar a:hover{
+  background:  #9bbbb5;
+font-size: 20px;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+border-bottom: 1px solid black;
+
+}
+.active{
+  border-bottom: 1px solid black;
+
+}
+.navbar-brand{
+  font-size: 20px;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+/* ---------footer----------------- */
+.footer{
+  background: #1f1d1d;
+  color: #f0e9e9;
+   padding: 25px;
+}
+.footer a{
+  color: rgb(173, 206, 235);
+  text-decoration: none;
+  padding: 2px;
+  margin: 5px 5px;
+}
+.footer a:hover{
+color: rgb(155, 155, 101);
+  border-bottom: 1px solid black;
+
+}
+.foot-link{
+  text-align: center;
+   margin-top: 3px;
+}
+/* ------------contact-------------- */
+.CI{
+  height: 400px;
+  width: 600px;
+}
+/* --------------register page---------- */
+.register{
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 5px;
+height: 70vh; 
+flex-direction: column;
+background: #000;
+color: rgb(173, 206, 235);
+}
+.HintEmail{
+  color: rgb(155, 155, 101);
+}
