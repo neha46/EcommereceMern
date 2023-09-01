@@ -11,7 +11,7 @@ const PageNotfound = () => {
         Page Not Found!
     </h3>
 
-    <Link  to="/"class="btn btn-secondary"  role="button">Link</Link>
+    <Link  to="/"class="btn btn-secondary"  role="button">Go Back Home</Link>
    </div>
     
    </Layout>

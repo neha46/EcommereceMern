@@ -1,0 +1,11 @@
+/* -----------------register---------------------- */
+.form-container{
+display: flex;
+align-items: center;
+justify-content: center;
+margin-top: 3px;
+height: 70vh; 
+flex-direction: column;
+background: #000;
+color: rgb(173, 206, 235);
+}

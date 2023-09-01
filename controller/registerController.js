@@ -12,19 +12,23 @@ try {
    
     const {name,password,email,phone,address,role}=req.body;
     //validations
-    if(!name){res.send({error: "name is required"})}
-    if(!phone){res.send({error: "phone is required"})}
-    if(!password){res.send({error: "password is required"})}
-    if(!email){res.send({error: "email is required"})}
-    if(!address){res.send({error: "address is required"})}
+    if(!name){res.send({message: "name is required"})}
+    if(!phone){res.send({message: "phone is required"})}
+    if(!password){res.send({message: "password is required"})}
+    if(!email){res.send({message: "email is required"})}
+    if(!address){res.send({message: "address is required"})}
    
 //existing user
 const  existingUser = await User.findOne({ email });
-if (!existingUser) {
-    return res.status(400).json("Email already exists");
+if (existingUser) {
+    return res.status(400).json({
+        sucess:false,
+        message:"Email already exists"
+    });
 }
 
 //password hash
+
 const hashedPassword= await hashPassword(password)
 //register user
 //to save
@@ -56,10 +60,8 @@ const getAll = async(req,res)=>{
 //login controller
 const loginController=async(req,res)=>
 {
-
     try {
         const {email,password}=req.body
-
         //validate
         if(!email || !password)
         {

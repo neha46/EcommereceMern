@@ -1,13 +1,11 @@
 // const express=require('express')
 import express from 'express'
 // const colors= require('colors')
-import colors from 'colors'
 import dotenv from 'dotenv'
-
 import morgan from 'morgan'
-import { connect } from 'mongoose';
 import connectdb from './config/database.js';
 import authRoute  from './routes/auth.Router.js'
+import cors from 'cors'
 
  // config  env at top
  dotenv.config();
@@ -20,6 +18,7 @@ import authRoute  from './routes/auth.Router.js'
 const app=express()
 
 //middleware
+app.use(cors())
 app.use(express.json())
 app.use(morgan('dev'))
 
