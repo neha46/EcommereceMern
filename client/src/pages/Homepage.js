@@ -6,20 +6,15 @@ import { useAuth } from '../Context/auth';
 const Homepage = () => {
   const[auth,setAuth]=useAuth()
   const [user, setUser] = useState(null);
-  console.log(user);
 
-  useEffect(()=>{
-    if(localStorage.getItem('auth' )){
-      const user = (localStorage.getItem('auth'))
-      console.log(user);
-      setUser(JSON.parse(user));
-  }
-},[])
+
+
   return (
     <Layout title={"Best Offers"}>
         <h1>home</h1>
         <pre>
-          {user?.message}
+          {/* {user?.message} */}
+          {JSON.stringify(auth,null,4)}
         </pre>
         <Example/>
     </Layout>

@@ -18,4 +18,10 @@ router.post('/login',loginController)
 //dummy test router- REQUIRESIGN- check PROTECTED ROUTe by token, isadmin->check admibn
 router.get('/test',requireSignIn,isAdmin,tester)
 
+//protected route
+router.get("/userAuth",requireSignIn,(req,res)=>{
+    res.status(200).send({ok:true})
+
+})
+
 export default router;

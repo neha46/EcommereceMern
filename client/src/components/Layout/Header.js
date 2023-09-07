@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import {NavLink,Link} from 'react-router-dom'
 import {SiPrestashop} from 'react-icons/si'
+import { useAuth } from '../../Context/auth';
+import {toast} from 'react-hot-toast'
 
 const Header = () => {
+  const [auth,setAuth]=useAuth('')
+  const handlelogout=()=>{
+    setAuth({...auth,
+    user:null,token:''})
+    localStorage.removeItem("auth")
+    toast.success('logout successfully')
+
+
+  }
   return (
    <>
    <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -36,17 +47,27 @@ const Header = () => {
             Categories
           </NavLink>
         </li>
-        <li className="nav-item">
+      {
+        !auth.user?(<>
+          <li className="nav-item">
           <NavLink to="/login" className="nav-link" >
             Login
           </NavLink>
         </li>
-        
+
         <li className="nav-item">
           <NavLink to="/register" className="nav-link" >
             Register
           </NavLink>
+        </li></>):(<>
+
+          <li className="nav-item">
+          <NavLink onClick={handlelogout} to="/login" className="nav-link" >
+            logout
+          </NavLink>
         </li>
+        </>)
+      }
         <li className="nav-item">
           <NavLink to="/cart" className="nav-link" >
             Cart(0)

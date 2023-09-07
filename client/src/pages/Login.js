@@ -1,6 +1,6 @@
 import React,{useState} from 'react';
 import Layout from '../components/Layout/Layout';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate,useLocation} from 'react-router-dom'
 import axios from 'axios'
 import {toast } from 'react-toastify';
 import '../style/AuthStyle.css'
@@ -8,6 +8,7 @@ import { useAuth } from '../Context/auth';
 const Login = () => {
     
     const navigate=useNavigate()
+    const location=useLocation()
     //states for  manage  value 
     
     const [email,setEmail]=useState("")
@@ -47,7 +48,7 @@ const HandleSubmit = async(event) => {
 
         //store in local storage
         localStorage.setItem('auth',JSON.stringify(res.data))
-            navigate("/")
+            navigate(location.state||"/") 
       
           }
           else{
