@@ -16,7 +16,8 @@ const Login = () => {
     const [password,setPassword]=useState("")
     const [auth,setAuth]=useAuth()
 
-    const reg = () => toast.success("login successfully");
+    const reg = () => 
+    toast.success("login successfully");
 //handle  Email input---------------------------------
     const handleEmail = (event) => {
         const newEmail = event.target.value;
@@ -99,7 +100,15 @@ const HandleSubmit = async(event) => {
   </div>
 
 
- <div className='text-center mt-3'>
+  <div className=" text-center mt-3">
+<button type="submit" className="btn btn-primary" onClick={()=>{navigate('/forgot-password')}}>
+    forget password
+  </button>
+</div>
+
+
+
+ <div className='text-center mt-3 '>
  <button type="submit" className="btn btn-primary" onClick={reg}>
     login
   </button>

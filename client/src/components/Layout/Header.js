@@ -61,10 +61,30 @@ const Header = () => {
           </NavLink>
         </li></>):(<>
 
-          <li className="nav-item">
+
+          <li className="nav-item dropdown">
+          <NavLink to="/dashboard"
+            className="nav-link dropdown-toggle"
+         
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+         {auth?.user?.name}
+          </NavLink>
+          <ul className="dropdown-menu">
+          
+            <li>
+              <NavLink to={`/dashboard/${auth?.user?.role===1 ?"admin":"user"}`} className="dropdown-item" >
+                Dashboard
+              </NavLink>
+            </li>
+            <li className="nav-item">
           <NavLink onClick={handlelogout} to="/login" className="nav-link" >
             logout
           </NavLink>
+        </li>
+          </ul>
         </li>
         </>)
       }
@@ -74,34 +94,7 @@ const Header = () => {
           </NavLink>
         </li>
     
-        <li className="nav-item dropdown">
-          <NavLink to="/dropdown"
-            className="nav-link dropdown-toggle"
-         
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown
-          </NavLink>
-          <ul className="dropdown-menu">
-            <li>
-              <NavLink to="/" className="dropdown-item" >
-                Action
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/" className="dropdown-item" >
-                Another action
-              </NavLink>
-            </li>
-            <li>
-              <NavLink to="/" className="dropdown-item" >
-                Something else here
-              </NavLink>
-            </li>
-          </ul>
-        </li>
+        
  
       </ul>
     </div>

@@ -1,3 +1,4 @@
+
 import React,{useState} from 'react';
 import Layout from '../components/Layout/Layout';
 import {useNavigate} from 'react-router-dom'
@@ -7,17 +8,16 @@ import '../style/AuthStyle.css'
 
 
 
-const Register = () => {
+const ForgotPassword = () => {
    const navigate=useNavigate()
     //states for  manage  value 
-    const [name,setName]=useState("")
     const [email,setEmail]=useState("")
-    const [phone,setPhone]=useState("")
-    const [address,setAddress]=useState("")
-    const [password,setPassword]=useState("")
+ 
+    const [newPassword,setNewPassword]=useState("")
+
     const [answer,setAnswer]=useState("")
 
-    const reg = () => toast.success("registered successfully");
+    const reg = () => toast.success("password reseted sucessfully");
 //handle  Email input---------------------------------
     const handleEmail = (event) => {
         const newEmail = event.target.value;
@@ -25,33 +25,22 @@ const Register = () => {
       };
 //handle  password input---------------------------------
     const handlePassword = (event) => {
-      const newPassword = event.target.value;
-      setPassword(newPassword);
+      const NewPassword = event.target.value;
+      setNewPassword(NewPassword);
     }; 
-//handle phone input---------------------------------
-const handlePhone = (event) => {
-  const newPhone = event.target.value;
-  setPhone(newPhone);
-}; 
-//handle  Address input---------------------------------
-const handleAddress = (event) => {
-  const newAddress = event.target.value;
-  setAddress(newAddress);
-}; 
+
 //handle submit---------------------------------
 const HandleSubmit = async(event) => {
   event.preventDefault();
   try {
-    const res = await axios.post('/auth/register', {
-      name,
+    const res = await axios.post('/auth/forgot-password', {
+    
       email,
-      password,
-      phone,
-      address,
+      newPassword,
       answer,
     });
     if(res.data.success){
-      toast.success("user registration successful") 
+      toast.success("password reset successful") 
       navigate("/login")
 
     }
@@ -69,22 +58,12 @@ const HandleSubmit = async(event) => {
     <>
     <Layout title={"Register Please!"}>
         <div className="form-container ">
-          <h1 className='mt-5'>Register Page👩‍🍳</h1>
+          <h1 className=''>Reset Password💫</h1>
 
     <form onSubmit={HandleSubmit}>
-    {/* ----------Name--------------------------------- */}
+
   <div className=" mt-3">
-  <label htmlFor="exampleInputName" className="form-label">
-      Name
-    </label>
-    <input
-      type="text"
-      value={name}
-      onChange={(e)=>setName(e.target.value)}
-      className="form-control"
-      id="exampleInputName"
-    />
-   
+
 {/* ----------Email--------------------------------- */}
     <label htmlFor="exampleInputEmail1" className="form-label">
       Email
@@ -104,40 +83,17 @@ const HandleSubmit = async(event) => {
   {/* ----------password--------------------------------- */}
   <div className="">
     <label htmlFor="exampleInputPassword1" className="form-label">
-      Password
+      NewPassword
     </label>
     <input
       type="password"
-      value={password}
+      value={newPassword}
       onChange={handlePassword}
       className="form-control"
       id="exampleInputPassword1"
     />
   </div>
-  {/* ----------phone--------------------------------- */}
-
-  <label htmlFor="exampleInputphone" className="form-label">
-      Phone
-    </label>
-    <input
-      type="number"
-      value={phone}
-      onChange={handlePhone}
-      className="form-control"
-      id="exampleInputName"
-    />
-      {/* ----------address--------------------------------- */}
-
-  <label htmlFor="exampleInputaddress" className="form-label">
-    Address
-    </label>
-    <input
-      type="text"
-      value={address}
-      onChange={handleAddress}
-      className="form-control"
-      id="exampleInputaddress"
-    />
+  {/* ----------answer----------------------- */}
      <div className=" mt-3">
   <label htmlFor="answer" className="form-label">
       answer
@@ -147,7 +103,7 @@ const HandleSubmit = async(event) => {
       value={answer}
       onChange={(e)=>setAnswer(e.target.value)}
       className="form-control"
-      id="answer" placeholder='whats your favourite song?'
+      id="answer" placeholder='enter your your favourite song?'
     />
     </div>
 
@@ -166,4 +122,4 @@ const HandleSubmit = async(event) => {
   );
 }
 
-export default Register;
+export default ForgotPassword;

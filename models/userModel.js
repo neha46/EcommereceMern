@@ -23,9 +23,14 @@ const userSchema=new mongoose.Schema({
         type:String,
         required:false
     },
+    answer:{
+        type:String,  //this is a string of the questions that will be asked to the users
+        required:true
+    },
     role:{
         type:Number,
-        requird:true
+        requird:true,
+        default:0
     }
 
 },{timestamps:true})
