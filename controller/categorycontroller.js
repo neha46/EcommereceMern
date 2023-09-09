@@ -1,6 +1,7 @@
 import categoryModel from '../models/categoryModel.js'
 import slugify from 'slugify'
 
+
 export const categorycontroller=async(req,res)=>{
   
     try {
